@@ -1,7 +1,7 @@
 {% extends "layout.html" %}
 {% block content %}
 <div class="content-section">
-    <a class="topcorner" href="{{url_for('main.face_login')}}">Forgot password?</a>
+    <a class="topcorner" href="{{url_for('main.face_login')}}" action="#">Forgot password?</a>
     <form method="POST" action="{{url_for('main.login_page')}}">
         {{ form.hidden_tag() }}
         <fieldset class="form-group">
