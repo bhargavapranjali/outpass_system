@@ -68,7 +68,7 @@ def reset_token(token):
     student = Student.verify_reset_token(token)
     if student is None:
         flash('That is an invalid or expired token', 'warning')
-        return render_template('404.html')
+        return render_template('errors/404.html')
     form = PermissionForm()
     if request.method == 'POST':
         if request.form['submit1'] == 'Yes':
