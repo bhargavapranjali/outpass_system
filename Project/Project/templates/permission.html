@@ -1,0 +1,27 @@
+{% extends "layout.html" %}
+{% block content %}
+    <div class="content-section">
+      <div class="media">
+        <div class="media-body">
+          <h2 class="account-heading">Dear {{ student.guardian_name }},</h2>
+        </div>
+      </div>
+        <form method="POST" action="#">
+            <fieldset class="form-group">
+                <legend class="border-bottom mb-4">Do you allow your ward {{ student.student_id }} 
+                    to go out of campus at {{ student.out_time }} for {{ student.purpose }}?
+                </legend>
+                <div class="modal-footer">
+                  <div class="form-group">
+                        {{ form.submit1(class="btn btn-success", value="Yes") }}
+                  </div>
+                  <div class="modal-footer">
+                    <div class="form-group">
+                        {{ form.submit1(class="btn btn-danger", value="No") }}
+                    </div>
+                </div> 
+              
+            </fieldset>
+        </form>
+    </div>
+{% endblock content %}

@@ -1,0 +1,109 @@
+{% extends "layout.html" %}
+{% block content %}
+    <div class="content-section">
+      <div class="media">
+        <div class="media-body">
+          <h2 class="account-heading">{{ current_user.student_id }}</h2>
+          <p class="text-secondary">{{ current_user.name }}</p> 
+        </div>
+        <img class="rounded-circle account-img" src="{{ image }}">
+      </div>
+        <form method="POST" action="">
+            {{ form.hidden_tag() }}
+            <fieldset class="form-group">
+                <legend class="border-bottom mb-4">Outpass Form</legend>
+                <div class="form-group">
+                    {{ form.student_id.label(class="form-control-label") }}
+                    {% if form.student_id.errors %}
+                        {{ form.student_id(class="form-control form-control-lg is-invalid") }}
+                        <div class="invalid-feedback">
+                            {% for error in form.student_id.errors %}
+                                <span>{{ error }}</span>
+                            {% endfor %}
+                        </div>
+                    {% else %}
+                        {% if current_user.sent_form==True %}
+                            {{ current_user.student_id }}
+                        {% else %}
+                            {{ form.student_id(class="form-control form-control-lg") }}
+                        {% endif %}
+                    {% endif %}
+                </div>
+                <div class="form-group">
+                    {{ form.name.label(class="form-control-label") }}
+                    {% if form.name.errors %}
+                        {{ form.name(class="form-control form-control-lg is-invalid") }}
+                        <div class="invalid-feedback">
+                            {% for error in form.name.errors %}
+                                <span>{{ error }}</span>
+                            {% endfor %}
+                        </div>
+                    {% else %}
+                        {% if current_user.sent_form==True %}
+                            {{ current_user.name }}
+                        {% else %}
+                            {{ form.name(class="form-control form-control-lg") }}
+                        {% endif %}
+                    {% endif %}
+                </div>
+                <div class="form-group">
+                    {{ form.hostel.label(class="form-control-label") }}
+                    {% if form.hostel.errors %}
+                        {{ form.hostel(class="form-control form-control-lg is-invalid") }}
+                        <div class="invalid-feedback">
+                            {% for error in form.hostel.errors %}
+                                <span>{{ error }}</span>
+                            {% endfor %}
+                        </div>
+                    {% else %}
+                        {% if current_user.sent_form==True %}
+                            {{ current_user.hostel }}
+                        {% else %}
+                            {{ form.hostel(class="form-control form-control-lg") }}
+                        {% endif %}
+                    {% endif %}
+                </div>
+                <div class="form-group">
+                    {{ form.purpose.label(class="form-control-label") }}
+                    {% if form.purpose.errors %}
+                        {{ form.purpose(class="form-control form-control-lg is-invalid") }}
+                        <div class="invalid-feedback">
+                            {% for error in form.purpose.errors %}
+                                <span>{{ error }}</span>
+                            {% endfor %}
+                        </div>
+                    {% else %}
+                        {% if current_user.sent_form==True %}
+                            {{ current_user.purpose }}
+                        {% else %}
+                            {{ form.purpose(class="form-control form-control-lg") }}
+                        {% endif %}
+                    {% endif %}
+                </div>
+                <div class="form-group">
+                    {{ form.out_time.label(class="form-control-label") }}
+                    {% if form.out_time.errors %}
+                        {{ form.out_time(class="form-control form-control-lg is-invalid") }}
+                        <div class="invalid-feedback">
+                            {% for error in form.out_time.errors %}
+                                <span>{{ error }}</span>
+                            {% endfor %}
+                        </div>
+                    {% else %}
+                        {% if current_user.sent_form==True %}
+                            {{ current_user.out_time }}
+                        {% else %}
+                            {{ form.out_time(class="form-control form-control-lg") }}
+                        {% endif %}
+                    {% endif %}
+                </div>
+            </fieldset>
+            <div class="form-group">
+                {% if current_user.sent_form==False %}
+                    {{ form.submit(class="btn btn-outline-info") }}
+                {% endif %}
+                
+            </div>
+        </form>
+    </div>
+{% endblock content %}
